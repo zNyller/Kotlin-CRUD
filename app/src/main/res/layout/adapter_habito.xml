@@ -24,27 +24,31 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/categoria"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:background="@color/cinza"
+                android:padding="12dp"
                 android:text="Categoria"
                 android:textColor="@color/white"
-                android:textSize="28sp"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/habito"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_weight="1"
                 android:background="@color/teal_200"
+                android:padding="12dp"
                 android:text="Habito"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="28sp"
+                android:textSize="24sp"
                 android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
