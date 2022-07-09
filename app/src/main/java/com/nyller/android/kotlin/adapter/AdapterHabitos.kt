@@ -6,15 +6,16 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.nyller.android.kotlin.R
+import com.nyller.android.kotlin.databinding.ActivityAddHabitoBinding
+import com.nyller.android.kotlin.databinding.ActivityMainBinding
+import com.nyller.android.kotlin.databinding.AdapterHabitoBinding
 import com.nyller.android.kotlin.models.Habito
-import kotlinx.android.synthetic.main.adapter_habito.view.*
 
 class AdapterHabitos (private val items : ArrayList<Habito>) : RecyclerView.Adapter<AdapterHabitos.HabitoViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdapterHabitos.HabitoViewHolder {
         return HabitoViewHolder(
-            LayoutInflater.from(parent.context)
-                .inflate(R.layout.adapter_habito, parent, false)
+            AdapterHabitoBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
     }
 
@@ -29,13 +30,11 @@ class AdapterHabitos (private val items : ArrayList<Habito>) : RecyclerView.Adap
         return items.size
     }
 
-    class HabitoViewHolder constructor(itemView: View): RecyclerView.ViewHolder(itemView){
+    inner class HabitoViewHolder constructor(itemView: AdapterHabitoBinding): RecyclerView.ViewHolder(itemView.root){
 
-        val habitoNome : TextView = itemView.findViewById(R.id.habito)
-        val habitoTurno : TextView = itemView.findViewById(R.id.turno)
-        val habitoCategoria : TextView = itemView.findViewById(R.id.categoria)
+        val habitoNome : TextView = itemView.habito
+        val habitoTurno : TextView = itemView.turno
+        val habitoCategoria : TextView = itemView.categoria
 
     }
-
-
 }

@@ -1,6 +1,5 @@
 package com.nyller.android.kotlin.activities
 
-import android.content.ContentValues.TAG
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,23 +8,23 @@ import android.view.View
 import com.google.firebase.firestore.FirebaseFirestore
 import com.nyller.android.kotlin.MainActivity
 import com.nyller.android.kotlin.R
-import kotlinx.android.synthetic.main.activity_add_habito.*
-import kotlinx.android.synthetic.main.adapter_habito.*
+import com.nyller.android.kotlin.databinding.ActivityAddHabitoBinding
 
 class AddHabitoActivity : AppCompatActivity() {
-
+    private lateinit var binding: ActivityAddHabitoBinding
     private val db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_habito)
+        binding = ActivityAddHabitoBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        btnSalvar.setOnClickListener(View.OnClickListener {
+        binding.btnSalvar.setOnClickListener(View.OnClickListener {
 
             val usuariosMap = hashMapOf(
-                "nome" to editNome.text.toString(),
-                "turno" to editTurno.text.toString(),
-                "categoria" to editCategoria.text.toString())
+                "nome" to binding.editNome.text.toString(),
+                "turno" to binding.editTurno.text.toString(),
+                "categoria" to binding.editCategoria.text.toString())
 
             db.collection("habitos").add(usuariosMap)
                 .addOnCompleteListener {
@@ -35,7 +34,7 @@ class AddHabitoActivity : AppCompatActivity() {
                 }
         })
 
-        btnAbrir.setOnClickListener(View.OnClickListener {
+        binding.btnAbrir.setOnClickListener(View.OnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
         })
 
